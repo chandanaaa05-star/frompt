@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>frompt — prompt builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">frompt</span>
+    </div>
+    <button class="history-btn" id="historyBtn" title="History">☰</button>
+    <button class="settings-btn" id="settingsBtn" title="Settings">⚙️</button>
+  </header>
+
+  <main>
+    <div class="chat-container" id="chatContainer">
+      <div class="chat-messages" id="chatMessages">
+        <div class="message frompt">
+          <div class="bubble">Hi! Tell me what kind of prompt you want to build. Just a few words is fine.</div>
+        </div>
+      </div>
+      <div class="typing-indicator" id="typingIndicator">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+    </div>
+
+    <aside class="preview-panel" id="previewPanel">
+      <div class="preview-header">
+        <span>📝 Prompt Preview</span>
+        <button class="preview-toggle" id="previewToggle">−</button>
+      </div>
+      <div class="preview-content" id="previewContent">
+        <p class="preview-placeholder">Your prompt will appear here...</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="input-bar">
+    <div class="input-wrap" id="inputWrap">
+      <input type="text" id="chatInput" placeholder="Type your prompt idea..." autofocus>
+    </div>
+    <button class="att-btn" id="attBtn" title="Attach files">📎</button>
+    <button class="send-btn" id="sendBtn">➤</button>
+    <input type="file" id="fileInput" multiple hidden>
+  </footer>
+
+  <div class="drop-overlay" id="dropOverlay">
+    <div class="drop-content">
+      <span class="drop-icon">📁</span>
+      <p>Drop files here</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Settings</h3>
+        <button class="modal-close" id="settingsClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="help-text">AI-powered prompt expansion via <a href="https://openrouter.ai/keys" target="_blank">OpenRouter</a> (use any model: Claude, GPT, Gemini — get a free API key). Works instantly, no backend needed.</p>
+        <div class="api-mode">
+          <span>🔑 OpenRouter Key</span>
+          <input type="password" id="apiKeyInput" placeholder="sk-or-v1-..." autocomplete="off">
+        </div>
+        <div class="api-mode">
+          <span>🌐 AI Mode</span>
+          <label class="toggle">
+            <input type="checkbox" id="aiModeToggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="saveSettings">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="history-panel" id="historyPanel">
+    <div class="history-header">
+      <span>📋 History</span>
+      <button class="history-close" id="historyClose">&times;</button>
+    </div>
+    <div class="history-list" id="historyList"></div>
+    <button class="history-clear" id="historyClear">Clear all</button>
+  </div>
+  <div class="history-overlay" id="historyOverlay"></div>
+
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
